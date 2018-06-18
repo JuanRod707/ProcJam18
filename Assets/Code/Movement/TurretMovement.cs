@@ -2,16 +2,17 @@
 
 namespace Code.Movement
 {
-    public class TurretMovement : MonoBehaviour {
+    public class TurretMovement : MonoBehaviour
+    {
+        public Transform AimPoint;
 
-        // Use this for initialization
-        void Start () {
-		
-        }
-	
-        // Update is called once per frame
         void Update () {
-		
+		    transform.LookAt(AimPoint);
+            var rotation = transform.eulerAngles;
+            //rotation.y = 0f;
+            rotation.z = 0f;
+
+            transform.eulerAngles = rotation;
         }
     }
 }
