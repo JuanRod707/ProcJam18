@@ -7,37 +7,32 @@ namespace Code.Level
 {
     public class Cave : MonoBehaviour
     {
-        private List<Collider> CaveSectionColliders = new List<Collider>();
+        private List<Collider> caveSectionColliders = new List<Collider>();
 
         void Start()
         {
             Instantiate(Repos.SectionsRepo.GetRandomBigChamber(), transform);
             var deadEnd = Instantiate(Repos.SectionsRepo.GetRandomDeadEnd(), transform);
             deadEnd.transform.eulerAngles = new Vector3(180f, 0f, 0f);
-
-            DeadEndAdded(deadEnd.GetComponentsInChildren<Collider>());
         }
 
-        public bool IsSectionValid(Collider[] sectionColliders, Collider[] collidersToIgnore)
+        public bool IsSectionValid(Collider sectionCollider, Collider colliderToIgnore)
         {
-            foreach (var colSection in sectionColliders)
+            foreach (var col in caveSectionColliders)
             {
-                foreach (var col in CaveSectionColliders)
+                if (colliderToIgnore != col && sectionCollider.bounds.Intersects(col.bounds))
                 {
-                    if (!collidersToIgnore.Contains(col) && colSection.bounds.Intersects(col.bounds))
-                    {
-                        return false;
-                    }
-                }                
+                    return false;
+                }
             }
 
-            CaveSectionColliders.AddRange(sectionColliders);
+            caveSectionColliders.Add(sectionCollider);
             return true;
         }
 
         public void DeadEndAdded(Collider[] sectionColliders)
         {
-            CaveSectionColliders.AddRange(sectionColliders);
+            caveSectionColliders.AddRange(sectionColliders);
         }
     }
 }

@@ -794,6 +794,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1547278143843816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4086089131074020}
+  - component: {fileID: 65517213794856984}
+  m_Layer: 0
+  m_Name: Bounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1560270375780204
 GameObject:
   m_ObjectHideFlags: 1
@@ -1500,6 +1516,19 @@ Transform:
   m_Father: {fileID: 4263270637641066}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4086089131074020
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1547278143843816}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4700994136376066}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4102938492662672
 Transform:
   m_ObjectHideFlags: 1
@@ -2164,6 +2193,7 @@ Transform:
   - {fileID: 4833984606283160}
   - {fileID: 4732862016124696}
   - {fileID: 4989007290335268}
+  - {fileID: 4086089131074020}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2230,7 +2260,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1172099638426248}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -10, y: 72.1, z: -40.6}
+  m_LocalPosition: {x: -10, y: 76, z: -40.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4342412764615988}
@@ -4570,6 +4600,18 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 29892a86ebae9214ab8ab067ee9d85a1, type: 3}
+--- !u!65 &65517213794856984
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1547278143843816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 20, y: 70, z: 75}
+  m_Center: {x: 0, y: 32.81, z: -0.1}
 --- !u!114 &114416571155882412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4588,3 +4630,4 @@ MonoBehaviour:
   - {fileID: 4449604539845028}
   - {fileID: 4450041710526506}
   MaxDistance: 200
+  Bounds: {fileID: 65517213794856984}

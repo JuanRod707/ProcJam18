@@ -6,6 +6,7 @@ namespace Code.Level
     public class Corridor : MonoBehaviour
     {
         public Transform[] Exits;
+        public Collider Bounds;
 
         private Cave Cave { get { return transform.parent.GetComponent<Cave>(); } }
 
@@ -34,14 +35,13 @@ namespace Code.Level
             var chamberPf = Random.Range(0, 10) > 1 ?
                 Repos.SectionsRepo.GetRandomSmallChamber() :
                 Repos.SectionsRepo.GetRandomBigChamber();
-            var chamber = Instantiate(chamberPf, exit.position, exit.rotation);
+            var chamber = Instantiate(chamberPf, exit.position, exit.rotation).GetComponent<Chamber>();
             chamber.transform.SetParent(Cave.transform);
 
-            if (!Cave.IsSectionValid(chamber.GetComponentsInChildren<Collider>(),
-                GetComponentsInChildren<Collider>()))
+            if (!Cave.IsSectionValid(chamber.Bounds, Bounds))
             {
                 PlaceDeadEnd(exit);
-                Destroy(chamber);
+                Destroy(chamber.gameObject);
             }
         }
     }

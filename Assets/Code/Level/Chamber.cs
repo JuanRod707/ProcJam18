@@ -8,6 +8,7 @@ namespace Code.Level
     {
         public Transform[] Exits;
         public float MaxDistance;
+        public Collider Bounds;
 
         private Cave Cave { get { return transform.parent.GetComponent<Cave>(); } }
 
@@ -45,14 +46,13 @@ namespace Code.Level
         void PlaceCorridor(Transform exit)
         {
             var corridorPf = Repos.SectionsRepo.GetRandomCorridor();
-            var corridor = Instantiate(corridorPf, exit.position, exit.rotation);
+            var corridor = Instantiate(corridorPf, exit.position, exit.rotation).GetComponent<Corridor>();
             corridor.transform.SetParent(Cave.transform);
 
-            if (!Cave.IsSectionValid(corridor.GetComponentsInChildren<Collider>(),
-                GetComponentsInChildren<Collider>()))
+            if (!Cave.IsSectionValid(corridor.Bounds, Bounds))
             {
                 PlaceDeadEnd(exit);
-                Destroy(corridor);
+                Destroy(corridor.gameObject);
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 namespace Code.Level
@@ -23,17 +24,30 @@ namespace Code.Level
         {
             yieldPerCrystal = MaxYield / Crystals.Length;
             currentYield = Random.Range(MinYield, MaxYield);
-
-            var yieldToLose = MaxYield - currentYield;
-            for (int i = 0; i < yieldToLose / yieldPerCrystal; i++)
-            {
-                RemoveCrystal();
-            }
+            UpdateCrystals();
         }
 
         void RemoveCrystal()
         {
             Crystals.Last(x => x.activeInHierarchy).SetActive(false);
+        }
+
+        void UpdateCrystals()
+        {
+            if (Crystals.Count(x => x.activeInHierarchy) > currentYield / yieldPerCrystal)
+            {
+                RemoveCrystal();
+                UpdateCrystals();
+            }
+        }
+
+        public float Mine(float mineStrength)
+        {
+            var amountMined = currentYield > mineStrength ? mineStrength : currentYield;
+            currentYield -= amountMined;
+            UpdateCrystals();
+
+            return amountMined;
         }
     }
 }
