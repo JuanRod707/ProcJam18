@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Code.Level
 {
-    public class Corridor : MonoBehaviour, CaveSection
+    public class Corridor : MonoBehaviour
     {
         public Transform[] Exits;
 
@@ -14,7 +14,7 @@ namespace Code.Level
             CreateAnnexes();
         }
 
-        public void CreateAnnexes()
+        void CreateAnnexes()
         {
             foreach (var e in Exits)
             {

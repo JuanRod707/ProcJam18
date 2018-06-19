@@ -9,6 +9,15 @@ namespace Code.Level
     {
         private List<Collider> CaveSectionColliders = new List<Collider>();
 
+        void Start()
+        {
+            Instantiate(Repos.SectionsRepo.GetRandomBigChamber(), transform);
+            var deadEnd = Instantiate(Repos.SectionsRepo.GetRandomDeadEnd(), transform);
+            deadEnd.transform.eulerAngles = new Vector3(180f, 0f, 0f);
+
+            DeadEndAdded(deadEnd.GetComponentsInChildren<Collider>());
+        }
+
         public bool IsSectionValid(Collider[] sectionColliders, Collider[] collidersToIgnore)
         {
             foreach (var colSection in sectionColliders)
@@ -26,11 +35,9 @@ namespace Code.Level
             return true;
         }
 
-        void RemoveSection(GameObject section)
+        public void DeadEndAdded(Collider[] sectionColliders)
         {
-            var deadEnd = Instantiate(Repos.SectionsRepo.GetRandomDeadEnd(), section.transform.position, section.transform.rotation);
-            deadEnd.transform.SetParent(transform);
-            Destroy(section);
+            CaveSectionColliders.AddRange(sectionColliders);
         }
     }
 }

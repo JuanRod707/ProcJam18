@@ -5,7 +5,8 @@ namespace Code.Weapons
 {
     public class PlasmaCannon : MonoBehaviour
     {
-        public Transform[] FirePositions;
+        public ParticleSystem[] FirePositions;
+        public BarrelKick[] Barrels;
         public GameObject PlasmaBallPf;
         public float RateOfFire;
 
@@ -16,7 +17,9 @@ namespace Code.Weapons
         {
             if (!isCycling)
             {
-                Instantiate(PlasmaBallPf, FirePositions[barrelIndex].position, transform.rotation);
+                Instantiate(PlasmaBallPf, FirePositions[barrelIndex].transform.position, transform.rotation);
+                FirePositions[barrelIndex].Play();
+                Barrels[barrelIndex].Kick();
                 CycleBarrel();
                 StartCoroutine(CycleAmmo());
             }

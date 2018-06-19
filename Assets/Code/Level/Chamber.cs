@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Code.Level
 {
-    public class Chamber : MonoBehaviour, CaveSection
+    public class Chamber : MonoBehaviour
     {
         public Transform[] Exits;
         public float MaxDistance;
@@ -16,13 +16,14 @@ namespace Code.Level
             CreateAnnexes();
         }
 
-        public void CreateAnnexes()
+        void CreateAnnexes()
         {
             if (transform.position.magnitude < MaxDistance)
             {
                 foreach (var e in Exits)
                 {
                     PlaceCorridor(e);
+                    Rooms.RoomCount++;
                 }
             }
             else
