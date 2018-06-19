@@ -1,5 +1,4 @@
-﻿using Code.Level;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Code.Infrastructure.Repositories
 {
@@ -15,6 +14,11 @@ namespace Code.Infrastructure.Repositories
             public static SectionRepository SectionsRepo
             {
                 get { return Repositories.GetComponent<SectionRepository>(); }
+            }
+
+            public static MineralRepository MineralsRepo
+            {
+                get { return Repositories.GetComponent<MineralRepository>(); }
             }
         }
     }

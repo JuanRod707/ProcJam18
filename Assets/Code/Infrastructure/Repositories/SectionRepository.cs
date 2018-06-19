@@ -1,7 +1,7 @@
 ﻿using Code.Helpers;
 using UnityEngine;
 
-namespace Code.Level
+namespace Code.Infrastructure.Repositories
 {
     public class SectionRepository : MonoBehaviour
     {
