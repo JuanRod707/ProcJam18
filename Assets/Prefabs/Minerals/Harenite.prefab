@@ -137,7 +137,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4126502241494854}
   - component: {fileID: 114727241938100168}
-  m_Layer: 0
+  - component: {fileID: 65178668193347366}
+  m_Layer: 12
   m_Name: Harenite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +234,7 @@ Transform:
   m_GameObject: {fileID: 1633108069630450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4601765604506338}
   - {fileID: 4779334721931676}
@@ -799,6 +800,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1679111148248662}
   m_Mesh: {fileID: 4300000, guid: d7114362cc166a74ca0110e0016dc690, type: 3}
+--- !u!65 &65178668193347366
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1633108069630450}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 1.2, z: 0.8}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!114 &114727241938100168
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -7,6 +7,7 @@ namespace Code.PlayerInput
     public class MouseInput : MonoBehaviour
     {
         public PlasmaCannon[] Cannons;
+        public MiningTool MiningTool;
 
         void Update ()
         {
@@ -16,6 +17,8 @@ namespace Code.PlayerInput
                 {
                     c.Fire();
                 }
+
+                MiningTool.Mine();
             }
         }
     }

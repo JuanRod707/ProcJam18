@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Code.Movement;
 using UnityEngine;
 
 namespace Code.Weapons
@@ -12,10 +13,16 @@ namespace Code.Weapons
 
         private int barrelIndex = 0;
         private bool isCycling;
-        
+        private TurretMovement turret;
+
+        void Start()
+        {
+            turret = GetComponentInParent<TurretMovement>();
+        }
+
         public void Fire()
         {
-            if (!isCycling)
+            if (!isCycling && turret.enabled)
             {
                 Instantiate(PlasmaBallPf, FirePositions[barrelIndex].transform.position, transform.rotation);
                 FirePositions[barrelIndex].Play();

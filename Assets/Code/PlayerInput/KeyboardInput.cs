@@ -1,4 +1,5 @@
 ﻿using Code.Movement;
+using Code.Weapons;
 using UnityEngine;
 
 namespace Code.PlayerInput
@@ -6,6 +7,7 @@ namespace Code.PlayerInput
     public class KeyboardInput : MonoBehaviour
     {
         public EntityMovement MovingEntity;
+        public SurveyorSystems Systems;
 
         void FixedUpdate ()
         {
@@ -14,6 +16,11 @@ namespace Code.PlayerInput
             if (totalMovement.magnitude > 0f)
             {
                 MovingEntity.Move(totalMovement);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Systems.SwitchMode();
             }
         }
     }

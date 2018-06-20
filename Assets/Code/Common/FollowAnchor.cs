@@ -7,7 +7,7 @@ namespace Code.Common
         public Transform Anchor;
         public float FollowSpeed;
 
-        void Update()
+        void FixedUpdate()
         {
             transform.position = Vector3.Lerp(transform.position, Anchor.transform.position, FollowSpeed);
         }
