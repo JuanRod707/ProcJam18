@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Code.Level;
 using Code.Movement;
+using Code.Ship;
 using UnityEngine;
 
 namespace Code.Weapons
@@ -12,6 +13,7 @@ namespace Code.Weapons
         public float MiningEfficiency;
         public float MineRange;
         public LayerMask MineralMask;
+        public CargoBay CargoBay;
 
         private TurretMovement turret;
         private bool isCycling;
@@ -45,7 +47,7 @@ namespace Code.Weapons
 
             if (Physics.Raycast(ray, out hit, MineRange, MineralMask))
             {
-                hit.collider.GetComponent<MineralDeposit>().Mine(MiningEfficiency);
+                CargoBay.AddCargo(hit.collider.GetComponent<MineralDeposit>().Mine(MiningEfficiency));
             }
         }
     }

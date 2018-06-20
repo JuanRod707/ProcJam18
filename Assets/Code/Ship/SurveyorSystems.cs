@@ -1,7 +1,8 @@
 ﻿using Code.Movement;
+using Code.Weapons;
 using UnityEngine;
 
-namespace Code.Weapons
+namespace Code.Ship
 {
     public class SurveyorSystems : MonoBehaviour
     {

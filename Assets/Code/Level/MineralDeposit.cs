@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Security.Cryptography.X509Certificates;
+using Code.Ship;
 using UnityEngine;
 
 namespace Code.Level
@@ -41,13 +42,18 @@ namespace Code.Level
             }
         }
 
-        public float Mine(float mineStrength)
+        public MineralYield Mine(float mineStrength)
         {
             var amountMined = currentYield > mineStrength ? mineStrength : currentYield;
             currentYield -= amountMined;
+            if (currentYield < 0)
+            {
+                currentYield = 0;
+            }
+
             UpdateCrystals();
 
-            return amountMined;
+            return new MineralYield(MineralColor, amountMined);
         }
     }
 }

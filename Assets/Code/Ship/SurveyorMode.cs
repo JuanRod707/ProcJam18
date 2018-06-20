@@ -1,4 +1,4 @@
-﻿namespace Code.Weapons
+﻿namespace Code.Ship
 {
     public enum SurveyorMode
     {
