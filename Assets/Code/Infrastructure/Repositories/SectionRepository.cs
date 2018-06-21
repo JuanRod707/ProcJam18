@@ -9,6 +9,7 @@ namespace Code.Infrastructure.Repositories
         public GameObject[] SmallChambers;
         public GameObject[] Corridors;
         public GameObject[] DeadEnds;
+        public GameObject[] Entrances;
 
         public GameObject GetRandomBigChamber()
         {
@@ -28,6 +29,11 @@ namespace Code.Infrastructure.Repositories
         public GameObject GetRandomDeadEnd()
         {
             return DeadEnds.PickOne();
+        }
+
+        public GameObject GetRandomEntrance()
+        {
+            return Entrances.PickOne();
         }
     }
 }

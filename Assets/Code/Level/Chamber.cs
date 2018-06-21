@@ -36,6 +36,11 @@ namespace Code.Level
                 {
                     PlaceDeadEnd(e);
                 }
+
+                if (Rooms.RoomCount <= 0)
+                {
+                    Cave.FinishCaveBuilding();
+                }
             }
         }
 
