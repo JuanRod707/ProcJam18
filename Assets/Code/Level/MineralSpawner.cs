@@ -1,4 +1,6 @@
-﻿using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
 using UnityEngine;
 
 namespace Code.Level
@@ -6,16 +8,17 @@ namespace Code.Level
     public class MineralSpawner : MonoBehaviour
     {
         public int SpawnChance;
-        public Transform[] SpawnPoints;
+        IEnumerable<Transform> spawnPoints;
 
         void Start()
         {
+            spawnPoints = GetComponentsInChildren<Transform>().Where(x => x != transform);
             GenerateDeposits();
         }
 
         void GenerateDeposits()
         {
-            foreach (var sp in SpawnPoints)
+            foreach (var sp in spawnPoints)
             {
                 if (Random.Range(0, 100) < SpawnChance)
                 {
