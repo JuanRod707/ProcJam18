@@ -2802,7 +2802,11 @@ MonoBehaviour:
   - {fileID: 114475037360933658}
   PlasmaBallPf: {fileID: 1919883903778380, guid: 35d31d47c7dfe1a4eb025809365be58f,
     type: 2}
+  EnergyMeter: {fileID: 0}
   RateOfFire: 0.2
+  MaxEnergy: 100
+  EnergyFireCost: 8
+  EnergyRecovery: 0.1
 --- !u!114 &114828913442969224
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2848,7 +2852,11 @@ MonoBehaviour:
   - {fileID: 114380182857241586}
   PlasmaBallPf: {fileID: 1919883903778380, guid: 35d31d47c7dfe1a4eb025809365be58f,
     type: 2}
+  EnergyMeter: {fileID: 0}
   RateOfFire: 0.2
+  MaxEnergy: 100
+  EnergyFireCost: 8
+  EnergyRecovery: 0.1
 --- !u!135 &135868522755390244
 SphereCollider:
   m_ObjectHideFlags: 1

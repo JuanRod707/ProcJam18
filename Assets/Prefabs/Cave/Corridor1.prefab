@@ -1630,3 +1630,5 @@ MonoBehaviour:
   Exits:
   - {fileID: 4843693639029476}
   Bounds: {fileID: 65216547023007348}
+  MiniMapSprite: {fileID: 1024939604302624, guid: 6c73fc57800e16447beac998d3ca3a74,
+    type: 2}

@@ -1,4 +1,5 @@
-﻿using Code.Helpers;
+﻿using Assets.Code.Common;
+using Code.Helpers;
 using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
 using UnityEngine;
 
@@ -9,22 +10,24 @@ namespace Code.Level
         public Transform[] Exits;
         public float MaxDistance;
         public Collider Bounds;
+        public GameObject MiniMapSprite;
 
         private Cave Cave { get { return transform.parent.GetComponent<Cave>(); } }
 
         void Start()
         {
             CreateAnnexes();
+            GlobalReferences.CaveMap.AddSection(MiniMapSprite, transform);
         }
 
         void CreateAnnexes()
         {
-            if (transform.position.magnitude < MaxDistance)
+            if (transform.position.magnitude < MaxDistance && Rooms.RoomCount > 0)
             {
                 foreach (var e in Exits)
                 {
                     PlaceCorridor(e);
-                    Rooms.RoomCount++;
+                    Rooms.RoomCount--;
                 }
             }
             else

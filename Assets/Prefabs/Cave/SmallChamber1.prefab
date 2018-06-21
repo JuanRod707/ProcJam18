@@ -2158,3 +2158,5 @@ MonoBehaviour:
   - {fileID: 4241367458771526}
   MaxDistance: 200
   Bounds: {fileID: 65734340272198218}
+  MiniMapSprite: {fileID: 1394520643086048, guid: 282e4e11b26409c4b85afa876d1e264e,
+    type: 2}

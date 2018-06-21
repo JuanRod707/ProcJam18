@@ -1,4 +1,5 @@
-﻿using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
+﻿using Assets.Code.Common;
+using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
 using UnityEngine;
 
 namespace Code.Level
@@ -7,12 +8,14 @@ namespace Code.Level
     {
         public Transform[] Exits;
         public Collider Bounds;
+        public GameObject MiniMapSprite;
 
         private Cave Cave { get { return transform.parent.GetComponent<Cave>(); } }
 
         void Start()
         {
             CreateAnnexes();
+            GlobalReferences.CaveMap.AddSection(MiniMapSprite, transform);
         }
 
         void CreateAnnexes()
