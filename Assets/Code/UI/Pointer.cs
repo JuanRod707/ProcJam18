@@ -4,7 +4,7 @@ namespace Code.UI
 {
     public class Pointer : MonoBehaviour
     {
-        void Update ()
+        void FixedUpdate ()
         {
             transform.position = Input.mousePosition;
         }
