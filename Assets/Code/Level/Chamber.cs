@@ -1,6 +1,7 @@
 ﻿using Assets.Code.Common;
 using Code.Helpers;
 using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
+using Code.Session;
 using UnityEngine;
 
 namespace Code.Level
@@ -8,7 +9,6 @@ namespace Code.Level
     public class Chamber : MonoBehaviour
     {
         public Transform[] Exits;
-        public float MaxDistance;
         public Collider Bounds;
         public GameObject MiniMapSprite;
 
@@ -22,12 +22,12 @@ namespace Code.Level
 
         void CreateAnnexes()
         {
-            if (transform.position.magnitude < MaxDistance && Rooms.RoomCount > 0)
+            if (Cave.RoomCount < CaveData.CaveSize)
             {
                 foreach (var e in Exits)
                 {
                     PlaceCorridor(e);
-                    Rooms.RoomCount--;
+                    Cave.RoomCount++;
                 }
             }
             else
@@ -37,7 +37,7 @@ namespace Code.Level
                     PlaceDeadEnd(e);
                 }
 
-                if (Rooms.RoomCount <= 0)
+                if (Cave.RoomCount >= CaveData.CaveSize)
                 {
                     Cave.FinishCaveBuilding();
                 }

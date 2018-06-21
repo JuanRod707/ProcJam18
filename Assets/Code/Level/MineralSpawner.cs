@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
+using Code.Session;
 using UnityEngine;
 
 namespace Code.Level
@@ -22,7 +23,7 @@ namespace Code.Level
             {
                 if (Random.Range(0, 100) < SpawnChance)
                 {
-                    Instantiate(Repos.MineralsRepo.GetRandomMineralDeposit(), sp);
+                    Instantiate(Repos.MineralsRepo.GetFilteredMineralDeposit(CaveData.AvailableMinerals), sp);
                 }
             }
         }

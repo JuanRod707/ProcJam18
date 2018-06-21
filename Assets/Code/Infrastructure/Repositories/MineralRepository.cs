@@ -1,4 +1,6 @@
-﻿using Code.Helpers;
+﻿using System.Linq;
+using Code.Helpers;
+using Code.Level;
 using UnityEngine;
 
 namespace Code.Infrastructure.Repositories
@@ -10,6 +12,11 @@ namespace Code.Infrastructure.Repositories
         public GameObject GetRandomMineralDeposit()
         {
             return Minerals.PickOne();
+        }
+
+        public GameObject GetFilteredMineralDeposit(Mineral[] mineralTypes)
+        {
+            return Minerals.Where(x => mineralTypes.Contains(x.GetComponent<MineralDeposit>().MineralColor)).PickOne();
         }
     }
 }

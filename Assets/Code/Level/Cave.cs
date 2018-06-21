@@ -8,14 +8,13 @@ namespace Code.Level
 {
     public class Cave : MonoBehaviour
     {
-        public int RoomCount;
+        public static int RoomCount;
 
         private List<Collider> caveSectionColliders = new List<Collider>();
         private bool caveClosed;
 
         void Start()
         {
-            Rooms.RoomCount = RoomCount;
             Instantiate(Repos.SectionsRepo.GetRandomBigChamber(), transform);
             var deadEnd = Instantiate(Repos.SectionsRepo.GetRandomDeadEnd(), transform);
             deadEnd.transform.eulerAngles = new Vector3(180f, 0f, 0f);
@@ -25,7 +24,7 @@ namespace Code.Level
         {
             if (!caveClosed)
             {
-                var topMostBounds = caveSectionColliders.OrderBy(x => x.transform.position.y).Last();
+                var topMostBounds = caveSectionColliders.Where(c => c.GetComponentInParent<Chamber>() != null).OrderBy(x => x.transform.position.y).Last();
                 var intersectingSections = caveSectionColliders.Where(x => x.bounds.Intersects(topMostBounds.bounds));
                 var deadEnds = intersectingSections.Where(x => x.transform.parent.GetComponent<DeadEnd>() != null);
                 var topChamber = topMostBounds.transform.parent;
