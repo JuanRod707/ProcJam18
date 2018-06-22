@@ -11,14 +11,19 @@ namespace Code.Level
         public float MaxYield;
         public float MinYield;
         public Light Light;
-
+        public ParticleSystem SparkParticle;
+        public ParticleSystem DustParticle;
+        
         public GameObject[] Crystals;
 
         private float currentYield;
         private float yieldPerCrystal;
+        private AudioSource RubbleSfx;
+        private bool playSounds;
 
         void Start()
         {
+            RubbleSfx = GetComponent<AudioSource>();
             CalculateCurrentYield();
         }
 
@@ -27,14 +32,22 @@ namespace Code.Level
             yieldPerCrystal = MaxYield / Crystals.Length;
             currentYield = Random.Range(MinYield, MaxYield);
             UpdateCrystals();
+            playSounds = true;
         }
 
         void RemoveCrystal()
         {
             Crystals.Last(x => x.activeInHierarchy).SetActive(false);
+            
             if (Crystals.All(x => !x.activeInHierarchy))
             {
                 Light.enabled = false;
+            }
+
+            if (playSounds)
+            {
+                RubbleSfx.Play();
+                DustParticle.Play();
             }
         }
 
@@ -56,6 +69,7 @@ namespace Code.Level
                 currentYield = 0;
             }
 
+            SparkParticle.Play();
             UpdateCrystals();
 
             return new MineralYield(MineralColor, amountMined);

@@ -9,6 +9,7 @@ namespace Code.Weapons
     public class MiningTool : MonoBehaviour
     {
         public ParticleSystem MineEffect;
+        public AudioSource MinerSfx;
         public float MiningRate;
         public float MiningEfficiency;
         public float MineRange;
@@ -30,6 +31,7 @@ namespace Code.Weapons
                 MineEffect.Play();
                 ExtractMinerals();
                 StartCoroutine(CycleAmmo());
+                MinerSfx.Play();
             }
         }
 
