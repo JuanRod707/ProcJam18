@@ -1,4 +1,4 @@
-﻿using Assets.Code.Common;
+﻿using Code.Common;
 using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
 using UnityEngine;
 
@@ -15,7 +15,6 @@ namespace Code.Level
         void Start()
         {
             CreateAnnexes();
-            GlobalReferences.CaveMap.AddSection(MiniMapSprite, transform);
         }
 
         void CreateAnnexes()

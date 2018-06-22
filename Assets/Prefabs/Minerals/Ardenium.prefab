@@ -921,6 +921,7 @@ MonoBehaviour:
   MineralColor: 2
   MaxYield: 100
   MinYield: 20
+  Light: {fileID: 108009024728941948}
   Crystals:
   - {fileID: 1120629702518832}
   - {fileID: 1785932731488130}

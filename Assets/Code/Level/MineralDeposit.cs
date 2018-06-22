@@ -10,6 +10,7 @@ namespace Code.Level
         public Mineral MineralColor;
         public float MaxYield;
         public float MinYield;
+        public Light Light;
 
         public GameObject[] Crystals;
 
@@ -31,6 +32,10 @@ namespace Code.Level
         void RemoveCrystal()
         {
             Crystals.Last(x => x.activeInHierarchy).SetActive(false);
+            if (Crystals.All(x => !x.activeInHierarchy))
+            {
+                Light.enabled = false;
+            }
         }
 
         void UpdateCrystals()
