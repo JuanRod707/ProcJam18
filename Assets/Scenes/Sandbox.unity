@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 21059743}
   - component: {fileID: 21059742}
   - component: {fileID: 21059744}
+  - component: {fileID: 21059745}
   m_Layer: 5
   m_Name: Minimap
   m_TagString: Untagged
@@ -320,6 +321,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &21059745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 21059740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a290acd79a96843924cbc268315281, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxSize: 1000
+  ScaleSpeed: 20
 --- !u!1 &82906602
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,19 +719,49 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114828913442969224, guid: 5c0c290301363bf4ab6eef452a33ee0b,
-        type: 2}
-      propertyPath: CargoPanel
-      value: 
-      objectReference: {fileID: 234735331}
     - target: {fileID: 114981243617794474, guid: 5c0c290301363bf4ab6eef452a33ee0b,
         type: 2}
       propertyPath: EnergyMeter
       value: 
       objectReference: {fileID: 1011232666}
+    - target: {fileID: 114828913442969224, guid: 5c0c290301363bf4ab6eef452a33ee0b,
+        type: 2}
+      propertyPath: CargoPanel
+      value: 
+      objectReference: {fileID: 234735331}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c0c290301363bf4ab6eef452a33ee0b, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &285463626 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114536131668393574, guid: 5c0c290301363bf4ab6eef452a33ee0b,
+    type: 2}
+  m_PrefabInternal: {fileID: 285463625}
+  m_Script: {fileID: 11500000, guid: e9f7e52c917e4f30a38b0d43badab108, type: 3}
+--- !u!114 &285463627 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114732853371217728, guid: 5c0c290301363bf4ab6eef452a33ee0b,
+    type: 2}
+  m_PrefabInternal: {fileID: 285463625}
+  m_Script: {fileID: 11500000, guid: a0ce01d134ecc294eaddcd6bff1bf0b3, type: 3}
+--- !u!114 &285463628 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114981243617794474, guid: 5c0c290301363bf4ab6eef452a33ee0b,
+    type: 2}
+  m_PrefabInternal: {fileID: 285463625}
+  m_Script: {fileID: 11500000, guid: a0ce01d134ecc294eaddcd6bff1bf0b3, type: 3}
+--- !u!114 &285463629 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114677259811609318, guid: 5c0c290301363bf4ab6eef452a33ee0b,
+    type: 2}
+  m_PrefabInternal: {fileID: 285463625}
+  m_Script: {fileID: 11500000, guid: 5959fd084af64b0097997ca464e0be60, type: 3}
+--- !u!114 &285463630 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114532264308452944, guid: 5c0c290301363bf4ab6eef452a33ee0b,
+    type: 2}
+  m_PrefabInternal: {fileID: 285463625}
+  m_Script: {fileID: 11500000, guid: f02ee3db38e5dfc4881d790efc03b45d, type: 3}
 --- !u!1001 &392983464
 Prefab:
   m_ObjectHideFlags: 0
@@ -849,6 +893,66 @@ Transform:
   m_PrefabParentObject: {fileID: 4265516676418552, guid: 5c0c290301363bf4ab6eef452a33ee0b,
     type: 2}
   m_PrefabInternal: {fileID: 285463625}
+--- !u!1 &978448093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 978448096}
+  - component: {fileID: 978448095}
+  - component: {fileID: 978448094}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &978448094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 978448093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3ca9c6572540bfbde5f54342a8ec2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cannons:
+  - {fileID: 285463628}
+  - {fileID: 285463627}
+  MiningTool: {fileID: 285463626}
+--- !u!114 &978448095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 978448093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5af404b9be79a4ab45fa13c37d0d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovingEntity: {fileID: 285463630}
+  Systems: {fileID: 285463629}
+  MapExpand: {fileID: 21059745}
+  MapCamera: {fileID: 1342542939}
+--- !u!4 &978448096
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 978448093}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1011232666 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114046981683207776, guid: 913b2ff7b337a854ba8ae5c6e9af61b7,
@@ -1403,7 +1507,7 @@ GameObject:
   - component: {fileID: 1342542941}
   - component: {fileID: 1342542939}
   m_Layer: 0
-  m_Name: MiniMapCamera
+  m_Name: MapCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1428,12 +1532,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1342542937}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d52bba3d3196664389ab8b760847852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 907c3c59e5cbab143a9c65aa29815841, type: 2}
+  MaxSize: 280
+  ZoomSpeed: 15
 --- !u!20 &1342542941
 Camera:
   m_ObjectHideFlags: 0
@@ -1451,10 +1556,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 1
-  far clip plane: 80
+  far clip plane: 500
   field of view: 75
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 70
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1463,7 +1568,7 @@ Camera:
   m_TargetTexture: {fileID: 8400000, guid: 5081695ea87d68f4fa9de441d89bbf51, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
+  m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 1
