@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Code.Helpers;
 using Code.Level;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace Code.Infrastructure.Repositories
             return Minerals.PickOne();
         }
 
-        public GameObject GetFilteredMineralDeposit(Mineral[] mineralTypes)
+        public GameObject GetFilteredMineralDeposit(IEnumerable<Mineral> mineralTypes)
         {
             return Minerals.Where(x => mineralTypes.Contains(x.GetComponent<MineralDeposit>().MineralColor)).PickOne();
         }

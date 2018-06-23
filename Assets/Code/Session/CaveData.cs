@@ -1,16 +1,17 @@
-﻿using Code.Level;
+﻿using System.Collections.Generic;
+using Code.Level;
 
 namespace Code.Session
 {
-    public static class CaveData
+    public class CaveData
     {
-        public static Mineral[] AvailableMinerals { get; private set; }
-        public static int CaveSize { get; private set; }
+        public IEnumerable<Mineral> AvailableMinerals { get; private set; }
+        public int CaveSize { get; private set; }
 
-        static CaveData()
+        public CaveData(int size, IEnumerable<Mineral> minerals)
         {
-            AvailableMinerals = new[] {Mineral.Blue, Mineral.Green};
-            CaveSize = 10;
+            AvailableMinerals = minerals;
+            CaveSize = size;
         }
     }
 }

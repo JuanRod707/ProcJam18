@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1439742658455766}
+  m_IsPrefabParent: 1
+--- !u!1 &1439742658455766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4379002074007788}
+  - component: {fileID: 114612455459431780}
+  - component: {fileID: 114651381772911166}
+  m_Layer: 0
+  m_Name: Repositories
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4379002074007788
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439742658455766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114612455459431780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439742658455766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faadca086a957fc4c8920cef1b4ce2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BigChambers:
+  - {fileID: 1589342277949232, guid: 3d17209567c073647b63cdf2887a8dc3, type: 2}
+  - {fileID: 1127687992195396, guid: 53962f5d263826e449f054188f8d0e00, type: 2}
+  SmallChambers:
+  - {fileID: 1605897034823554, guid: 8f691cacf3d2c6b4dab349cf297e5042, type: 2}
+  - {fileID: 1410887590207416, guid: 1696e791dd0330f4b8ea229b85d71c36, type: 2}
+  Corridors:
+  - {fileID: 1470450100289138, guid: 7f142fc9f1cb78a4f8a5002806304e18, type: 2}
+  - {fileID: 1866692319019526, guid: 16a973e0a1a96714bbee742819fa900f, type: 2}
+  DeadEnds:
+  - {fileID: 1697399955524140, guid: 45ce31aca449ecf4d8762b2c9355e7a8, type: 2}
+  Entrances:
+  - {fileID: 1524166463056284, guid: c222cb8a93eeff74cb0110cbf8ca2dad, type: 2}
+--- !u!114 &114651381772911166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439742658455766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6e4e280858c4789a6b0c3e4aba88dac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Minerals:
+  - {fileID: 1633108069630450, guid: 4b417ee92abeaf84aa4096097caaf14b, type: 2}
+  - {fileID: 1689253979810828, guid: d30dccdfb0ce97a42a3febe9cd38efb9, type: 2}
+  - {fileID: 1207148018874200, guid: ff2fe324afeb6cd408526977b879d4d8, type: 2}
+  - {fileID: 1139425316083882, guid: 809d8e41849e81b43858cd4aeebc97a3, type: 2}
+  - {fileID: 1449700138120644, guid: abfceab935adb3c40ba4f126f07a2a0f, type: 2}

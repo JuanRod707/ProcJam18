@@ -21,7 +21,7 @@ namespace Code.Level
 
         void CreateAnnexes()
         {
-            if (Cave.RoomCount < CaveData.CaveSize)
+            if (Cave.RoomCount < LiveSession.CaveData.CaveSize)
             {
                 foreach (var e in Exits)
                 {
@@ -36,7 +36,7 @@ namespace Code.Level
                     PlaceDeadEnd(e);
                 }
 
-                if (Cave.RoomCount >= CaveData.CaveSize)
+                if (Cave.RoomCount >= LiveSession.CaveData.CaveSize)
                 {
                     Cave.FinishCaveBuilding();
                 }

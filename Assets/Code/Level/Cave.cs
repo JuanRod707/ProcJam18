@@ -2,6 +2,7 @@
 using System.Linq;
 using Code.Helpers;
 using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
+using Code.Session;
 using UnityEngine;
 
 namespace Code.Level
@@ -9,12 +10,18 @@ namespace Code.Level
     public class Cave : MonoBehaviour
     {
         public static int RoomCount;
+        public bool MenuCave;
 
         private List<Collider> caveSectionColliders = new List<Collider>();
         private bool caveClosed;
 
         void Start()
         {
+            if (MenuCave)
+            {
+               PrepareMenuCave();
+            }
+
             Instantiate(Repos.SectionsRepo.GetRandomBigChamber(), transform);
             var deadEnd = Instantiate(Repos.SectionsRepo.GetRandomDeadEnd(), transform);
             deadEnd.transform.eulerAngles = new Vector3(180f, 0f, 0f);
@@ -34,11 +41,14 @@ namespace Code.Level
                     Destroy(de.gameObject);
                 }
 
-                var entrance = Instantiate(Repos.SectionsRepo.GetRandomEntrance(), topChamber.position,
-                    topChamber.rotation);
-                entrance.transform.SetParent(transform);
-                Destroy(topChamber.gameObject);
-                caveClosed = true;
+                if (!MenuCave)
+                {
+                    var entrance = Instantiate(Repos.SectionsRepo.GetRandomEntrance(), topChamber.position,
+                        topChamber.rotation);
+                    entrance.transform.SetParent(transform);
+                    Destroy(topChamber.gameObject);
+                    caveClosed = true;
+                }
             }
         }
 
@@ -59,6 +69,18 @@ namespace Code.Level
         public void DeadEndAdded(Collider[] sectionColliders)
         {
             caveSectionColliders.AddRange(sectionColliders);
+        }
+
+        void PrepareMenuCave()
+        {
+            var indexes = Enumerable.Range(0, 4).ToList();
+            var minerals = new List<Mineral>();
+            var idx = indexes.PickOne();
+            indexes.Remove(idx);
+            minerals.Add((Mineral)idx);
+            minerals.Add((Mineral)indexes.PickOne());
+
+            LiveSession.SetCaveData(5, minerals.ToArray());
         }
     }
 }

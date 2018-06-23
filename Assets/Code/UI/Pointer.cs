@@ -4,9 +4,17 @@ namespace Code.UI
 {
     public class Pointer : MonoBehaviour
     {
-        void FixedUpdate ()
+        private RectTransform myRect;
+
+        void Start()
         {
-            transform.position = Input.mousePosition;
+            myRect = this.GetComponent<RectTransform>();
+            Cursor.visible = false;
+        }
+
+        void Update()
+        {
+            myRect.position = Input.mousePosition;
         }
     }
 }

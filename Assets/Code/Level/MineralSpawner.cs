@@ -23,7 +23,7 @@ namespace Code.Level
             {
                 if (Random.Range(0, 100) < SpawnChance)
                 {
-                    Instantiate(Repos.MineralsRepo.GetFilteredMineralDeposit(CaveData.AvailableMinerals), sp);
+                    Instantiate(Repos.MineralsRepo.GetFilteredMineralDeposit(LiveSession.CaveData.AvailableMinerals), sp);
                 }
             }
         }

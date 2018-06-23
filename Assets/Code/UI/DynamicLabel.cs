@@ -8,13 +8,10 @@ namespace Code.UI
     {
         public string LabelFormat;
 
-        private Text mytext;
-
-        void Start()
-        {
-            mytext = GetComponent<Text>();
+        private Text mytext {
+            get { return GetComponent<Text>(); }
         }
-
+        
         public void SetLabel(params string[] parameters)
         {
             mytext.text = string.Format(LabelFormat, parameters);

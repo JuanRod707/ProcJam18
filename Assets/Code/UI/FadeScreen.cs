@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Experimental.UIElements;
+using UnityEngine;
 
 namespace Assets.Code.UI
 {
@@ -20,9 +21,19 @@ namespace Assets.Code.UI
             Fade(deltaFade);
         }
 
-        public void Fade(float delta)
+        void Fade(float delta)
         {
             canvas.alpha += delta;
+        }
+
+        public void FadeIn()
+        {
+            fadeOut = false;
+        }
+
+        public void FadeOut()
+        {
+            fadeOut = true;
         }
     }
 }
