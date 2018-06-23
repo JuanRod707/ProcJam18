@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 135559992958650194}
   m_Layer: 0
   m_Name: Vert4
-  m_TagString: Untagged
+  m_TagString: Shriek
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 135281231150696720}
   m_Layer: 0
   m_Name: Tail
-  m_TagString: Untagged
+  m_TagString: Shriek
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 4773806166367472}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Shriek
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 135679306969200562}
   m_Layer: 0
   m_Name: Vert3
-  m_TagString: Untagged
+  m_TagString: Shriek
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 135274668976090198}
   m_Layer: 0
   m_Name: Vert2
-  m_TagString: Untagged
+  m_TagString: Shriek
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -270,10 +270,12 @@ GameObject:
   - component: {fileID: 4189009692234310}
   - component: {fileID: 54442585244618954}
   - component: {fileID: 136289434718358418}
-  - component: {fileID: 114381712152785548}
+  - component: {fileID: 114080412592257044}
+  - component: {fileID: 114885528417549924}
+  - component: {fileID: 114116700177453974}
   m_Layer: 0
-  m_Name: ShriekDrone
-  m_TagString: Untagged
+  m_Name: ShriekGrunt
+  m_TagString: Shriek
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -323,7 +325,7 @@ GameObject:
   - component: {fileID: 135302663024663882}
   m_Layer: 0
   m_Name: Vert1
-  m_TagString: Untagged
+  m_TagString: Shriek
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,7 +358,7 @@ GameObject:
   - component: {fileID: 135226280885420916}
   m_Layer: 0
   m_Name: Vert5
-  m_TagString: Untagged
+  m_TagString: Shriek
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -395,7 +397,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1697931809107480}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.84, z: 3.49}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4773806166367472}
@@ -1165,7 +1167,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: -1.1799994}
+  m_ConnectedAnchor: {x: 0, y: 0, z: -1.1799998}
   m_UseSpring: 0
   m_Spring:
     spring: 0
@@ -1257,7 +1259,7 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &114381712152785548
+--- !u!114 &114080412592257044
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1265,11 +1267,51 @@ MonoBehaviour:
   m_GameObject: {fileID: 1697931809107480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4610d7ce04e41c19102499290516cd3, type: 3}
+  m_Script: {fileID: 11500000, guid: d10b7c116cf54c64b8a2d87ee6d1cca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveAcceleration: 200
-  RotationSpeed: -100
+  MoveSpeed: 300
+  ChargeSpeed: 650
+  RotationSpeed: 150
+--- !u!114 &114116700177453974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697931809107480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c5cd4c448524c447859a6e586554320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingHealth: 50
+  DistanceToDispose: 20
+  Bodies:
+  - {fileID: 54442585244618954}
+  - {fileID: 54671594387149118}
+  - {fileID: 54972339336200410}
+  - {fileID: 54311071251849620}
+  - {fileID: 54461494771762266}
+  - {fileID: 54540687573590056}
+  - {fileID: 54992852320495596}
+--- !u!114 &114885528417549924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697931809107480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f929e333b6864712bdfaae8c3ead031c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DistanceToSearch: 40
+  NavigateViewDistance:
+    MinValue: 10
+    MaxValue: 40
+  ViewDistance:
+    MinValue: 20
+    MaxValue: 60
 --- !u!135 &135226280885420916
 SphereCollider:
   m_ObjectHideFlags: 1

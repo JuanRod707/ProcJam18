@@ -1,5 +1,8 @@
-﻿namespace Code.Helpers
+﻿using System;
+
+namespace Code.Helpers
 {
+    [Serializable]
     public struct FloatRange
     {
         public float MinValue;

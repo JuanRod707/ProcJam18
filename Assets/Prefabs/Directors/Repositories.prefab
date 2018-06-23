@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4379002074007788}
   - component: {fileID: 114612455459431780}
   - component: {fileID: 114651381772911166}
+  - component: {fileID: 114325266532238736}
   m_Layer: 0
   m_Name: Repositories
   m_TagString: Untagged
@@ -41,6 +42,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114325266532238736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1439742658455766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 386f9ff5899c47a9b095b788d58d03c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shrieks:
+  - {fileID: 1697931809107480, guid: 95ef968e4226910419d115526eb27356, type: 2}
 --- !u!114 &114612455459431780
 MonoBehaviour:
   m_ObjectHideFlags: 1

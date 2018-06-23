@@ -20,6 +20,11 @@ namespace Code.Infrastructure.Repositories
             {
                 get { return Repositories.GetComponent<MineralRepository>(); }
             }
+
+            public static ShriekRepository ShrieksRepo
+            {
+                get { return Repositories.GetComponent<ShriekRepository>(); }
+            }
         }
     }
 

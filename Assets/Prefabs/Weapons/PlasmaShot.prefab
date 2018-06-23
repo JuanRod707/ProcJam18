@@ -480,6 +480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff09aaf0d0ad452aa1f512d95ccc4fa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 8
+  PushForce: 30000
   HitPrefab: {fileID: 1151058806947516, guid: 00d99bf17d7315f4fae74451e4d7f1c1, type: 2}
 --- !u!114 &114461523051758590
 MonoBehaviour:

@@ -12,8 +12,12 @@ namespace Code.Common
 
         public static Cave Cave { get { return GameObject.Find("Cave").GetComponent<Cave>(); } }
 
+        public static Transform Surveyor { get { return GameObject.Find("Surveyor").GetComponent<Transform>(); } }
+
         public static CargoBay CargoBay { get { return GameObject.Find("CargoBay").GetComponent<CargoBay>(); } }
 
         public static Notifications Notifications { get { return GameObject.Find("Notifications").GetComponent<Notifications>(); } }
+
+        public static Transform ShriekContainer { get { return GameObject.Find("Shrieks").GetComponent<Transform>(); } }
     }
 }
