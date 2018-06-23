@@ -6,18 +6,14 @@ namespace Code.PlayerInput
 {
     public class MouseInput : MonoBehaviour
     {
-        public PlasmaCannon[] Cannons;
+        public PlasmaCannon Cannons;
         public MiningTool MiningTool;
 
         void Update ()
         {
             if (Input.GetMouseButton(0))
             {
-                foreach (var c in Cannons)
-                {
-                    c.Fire();
-                }
-
+                Cannons.Fire();
                 MiningTool.Mine();
             }
         }

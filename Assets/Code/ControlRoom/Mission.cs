@@ -6,5 +6,6 @@
         int Reward { get; }
         bool IsComplete { get; }
         void CheckCompletion();
+        void Complete();
     }
 }

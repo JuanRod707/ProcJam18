@@ -4,9 +4,9 @@ namespace Code.Session
 {
     public class PlayerData
     {
-        public string Name { get; private set; }
-        public int Balance { get; private set; }
-        public int ServiceDays { get; private set; }
+        public string Name { get; set; }
+        public int Balance { get; set; }
+        public int ServiceDays { get; set; }
 
         public PlayerData()
         {

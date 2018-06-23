@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Code.Common;
 using Code.ControlRoom;
 using Code.Level;
 
@@ -30,6 +31,23 @@ namespace Code.Session
         public static void SetPlayerData(PlayerData player)
         {
             PlayerData = player;
+        }
+
+        public static void SavePlayer()
+        {
+            
+        }
+
+        public static void ExitCave()
+        {
+            PlayerData.ServiceDays++;
+            if (CurrentMission.IsComplete)
+            {
+                PlayerData.Balance += CurrentMission.Reward;
+                CurrentMission.Complete();
+            }
+
+            GlobalReferences.CargoBay.CashIn();
         }
     }
 }

@@ -4,19 +4,21 @@ using UnityEngine;
 
 namespace Code.Level
 {
-    public class MapDiscoverable:MonoBehaviour
+    public class SectionBounds : MonoBehaviour
     {
         public string MapTag;
         public string PlayerTag;
 
-        private bool hasBeenMapped = true;
         private IEnumerable<MeshRenderer> meshes;
+
+        public bool HasBeenMapped { get; private set; }
+        private Cave Cave { get { return GetComponentInParent<Cave>(); } }
 
         void Start()
         {
             meshes = transform.parent.GetComponentsInChildren<MeshRenderer>().Where(x => x.CompareTag(MapTag));
             HideMeshes();
-            hasBeenMapped = false;
+            HasBeenMapped = false;
         }
 
         void HideMeshes()
@@ -29,20 +31,24 @@ namespace Code.Level
 
         void ShowMeshes()
         {
-            foreach (var m in meshes)
+            if (meshes != null)
             {
-                m.enabled = true;
+                foreach (var m in meshes)
+                {
+                    m.enabled = true;
+                }
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!hasBeenMapped)
+            if (!HasBeenMapped)
             {
                 if (other.CompareTag(PlayerTag))
                 {
                     ShowMeshes();
-                    hasBeenMapped = true;
+                    HasBeenMapped = true;
+                    Cave.DiscoveredSection();
                 }
             }
         }

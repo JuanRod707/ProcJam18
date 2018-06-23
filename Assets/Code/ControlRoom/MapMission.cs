@@ -1,4 +1,5 @@
-﻿using Code.Helpers;
+﻿using Code.Common;
+using Code.Helpers;
 
 namespace Code.ControlRoom
 {
@@ -22,6 +23,13 @@ namespace Code.ControlRoom
         }
 
         public void CheckCompletion()
+        {
+            IsComplete = GlobalReferences.Cave.ExploredPercentage >= 100;
+            if(IsComplete)
+                GlobalReferences.Notifications.DisplayMissionAccomplished();
+        }
+
+        public void Complete()
         {
             
         }

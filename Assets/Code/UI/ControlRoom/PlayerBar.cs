@@ -1,4 +1,5 @@
-﻿using Code.Session;
+﻿using Code.Common;
+using Code.Session;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,12 @@ namespace Code.UI.ControlRoom
             CharacterName.text = LiveSession.PlayerData.Name;
             Balance.SetLabel(LiveSession.PlayerData.Balance.ToString());
             ServiceDays.SetLabel(LiveSession.PlayerData.ServiceDays.ToString());
+        }
+
+        public void ReturnToMenu()
+        {
+            LiveSession.SavePlayer();
+            GetComponent<SceneTransition>().DelayedSceneChange("MainMenu");
         }
     }
 }

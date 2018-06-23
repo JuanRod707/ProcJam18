@@ -3,20 +3,25 @@ using System.Linq;
 using Code.Helpers;
 using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
 using Code.Session;
+using Code.UI;
 using UnityEngine;
 
 namespace Code.Level
 {
     public class Cave : MonoBehaviour
     {
-        public static int RoomCount;
+        public int RoomCount;
         public bool MenuCave;
+        public DynamicLabel PercentageExplored;
 
         private List<Collider> caveSectionColliders = new List<Collider>();
         private bool caveClosed;
 
+        public float ExploredPercentage { get; private set; }
+
         void Start()
         {
+            RoomCount = 0;
             if (MenuCave)
             {
                PrepareMenuCave();
@@ -38,6 +43,7 @@ namespace Code.Level
 
                 foreach (var de in deadEnds)
                 {
+                    caveSectionColliders.Remove(de);
                     Destroy(de.gameObject);
                 }
 
@@ -46,6 +52,7 @@ namespace Code.Level
                     var entrance = Instantiate(Repos.SectionsRepo.GetRandomEntrance(), topChamber.position,
                         topChamber.rotation);
                     entrance.transform.SetParent(transform);
+                    caveSectionColliders.Remove(topMostBounds);
                     Destroy(topChamber.gameObject);
                     caveClosed = true;
                 }
@@ -66,9 +73,19 @@ namespace Code.Level
             return true;
         }
 
-        public void DeadEndAdded(Collider[] sectionColliders)
+        public void DeadEndAdded(Collider sectionCollider)
         {
-            caveSectionColliders.AddRange(sectionColliders);
+            caveSectionColliders.Add(sectionCollider);
+        }
+
+        public void DiscoveredSection()
+        {
+            var sections = caveSectionColliders.Select(x => x.GetComponent<SectionBounds>()).ToArray();
+            var exploredCount = sections.Count(x => x.HasBeenMapped);
+            ExploredPercentage = (float)exploredCount / (float)sections.Count() * 100f;
+
+            PercentageExplored.SetLabel(ExploredPercentage.ToString("0"));
+            LiveSession.CurrentMission.CheckCompletion();    
         }
 
         void PrepareMenuCave()

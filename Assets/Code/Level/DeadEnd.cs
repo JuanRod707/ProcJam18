@@ -9,7 +9,7 @@ namespace Code.Level
 
         void Start()
         {
-            Cave.DeadEndAdded(GetComponentsInChildren<Collider>());
+            Cave.DeadEndAdded(Bounds);
         }
     }
 }

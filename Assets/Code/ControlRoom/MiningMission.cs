@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Code.Common;
 using Code.Helpers;
 using Code.Level;
 
@@ -32,7 +33,14 @@ namespace Code.ControlRoom
 
         public void CheckCompletion()
         {
-            
+            IsComplete = GlobalReferences.CargoBay.Contains(targetMineral) >= targetAmount;
+            if (IsComplete)
+                GlobalReferences.Notifications.DisplayMissionAccomplished();
+        }
+
+        public void Complete()
+        {
+            GlobalReferences.CargoBay.Remove(targetMineral, targetAmount);
         }
     }
 }

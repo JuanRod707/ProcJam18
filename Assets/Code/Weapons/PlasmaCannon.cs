@@ -7,8 +7,10 @@ namespace Code.Weapons
 {
     public class PlasmaCannon : MonoBehaviour
     {
-        public ParticleSystem[] FirePositions;
+        public ParticleSystem[] MuzzleFlashes;
         public BarrelKick[] Barrels;
+        public Transform[] FiringPositions;
+
         public GameObject PlasmaBallPf;
         public Image EnergyMeter;
         public float RateOfFire;
@@ -50,8 +52,8 @@ namespace Code.Weapons
         {
             if (!isCycling && currentEnergy >= EnergyFireCost && turret.enabled)
             {
-                Instantiate(PlasmaBallPf, FirePositions[barrelIndex].transform.position, transform.rotation);
-                FirePositions[barrelIndex].Play();
+                Instantiate(PlasmaBallPf, MuzzleFlashes[barrelIndex].transform.position, transform.rotation);
+                MuzzleFlashes[barrelIndex].Play();
                 Barrels[barrelIndex].Kick();
                 CycleBarrel();
                 StartCoroutine(CycleAmmo());
@@ -70,7 +72,7 @@ namespace Code.Weapons
         {
             barrelIndex++;
 
-            if (barrelIndex >= FirePositions.Length)
+            if (barrelIndex >= MuzzleFlashes.Length)
             {
                 barrelIndex = 0;
             }

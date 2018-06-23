@@ -15,7 +15,7 @@ namespace Code.Common
 
         IEnumerator WaitAndChangeScene(string scene)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(2);
             SceneManager.LoadScene(scene);
         }
     }
