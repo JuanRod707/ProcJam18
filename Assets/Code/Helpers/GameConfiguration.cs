@@ -50,10 +50,10 @@ namespace Code.Helpers
             MineralDisplay = new Dictionary<Mineral, string>();
 
             MineralDisplay.Add(Mineral.White, "<color=#C3C3C3>Harenite</color>");
-            MineralDisplay.Add(Mineral.Green, "<color=#00AB37>Polonite</color>");
-            MineralDisplay.Add(Mineral.Red, "<color=#AB2B00>Adrenium</color>");
-            MineralDisplay.Add(Mineral.Blue, "<color=#0047AB>Thordenite</color>");
-            MineralDisplay.Add(Mineral.Yellow, "<color=#ABA800>Stronium</color>");
+            MineralDisplay.Add(Mineral.Green, "<color=#00FF1A>Polonite</color>");
+            MineralDisplay.Add(Mineral.Red, "<color=#FF0300>Adrenium</color>");
+            MineralDisplay.Add(Mineral.Blue, "<color=#00BBFF>Thordenite</color>");
+            MineralDisplay.Add(Mineral.Yellow, "<color=#FFFF00>Stronium</color>");
         }
     }
 }

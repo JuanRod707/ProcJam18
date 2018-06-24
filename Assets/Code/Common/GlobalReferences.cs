@@ -19,5 +19,7 @@ namespace Code.Common
         public static Notifications Notifications { get { return GameObject.Find("Notifications").GetComponent<Notifications>(); } }
 
         public static Transform ShriekContainer { get { return GameObject.Find("Shrieks").GetComponent<Transform>(); } }
+
+        public static GameObject MusicPlayer { get { return GameObject.Find("MusicPlayer"); } }
     }
 }

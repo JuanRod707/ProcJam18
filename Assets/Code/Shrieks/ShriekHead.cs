@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Code.Common;
+using Code.Helpers;
 using Code.Level;
 using Code.Session;
 using UnityEngine;
@@ -13,6 +14,7 @@ namespace Code.Shrieks
         public float DistanceToDispose;
         public Rigidbody[] Bodies;
         public AudioClip DieSfx;
+        public FloatRange SizeVariation;
 
         private float currentHealth;
         private ShriekBrain brain;
@@ -28,10 +30,15 @@ namespace Code.Shrieks
         void Start()
         {
             brain = GetComponent<ShriekBrain>();
-            Mutate();
-            currentHealth = StartingHealth;
             surveyor = GlobalReferences.Surveyor;
             audioPlayer = GetComponent<AudioSource>();
+
+            var size = MathHelper.SelectFromRange(SizeVariation);
+            transform.localScale = transform.localScale * size;
+            StartingHealth *= size;
+
+            Mutate();
+            currentHealth = StartingHealth;
         }
 
         void Update()

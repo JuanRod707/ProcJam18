@@ -33,9 +33,12 @@ namespace Code.ControlRoom
 
         public void CheckCompletion()
         {
-            IsComplete = GlobalReferences.CargoBay.Contains(targetMineral) >= targetAmount;
-            if (IsComplete)
-                GlobalReferences.Notifications.DisplayMissionAccomplished();
+            if(!IsComplete)
+            { 
+               IsComplete = GlobalReferences.CargoBay.Contains(targetMineral) >= targetAmount;
+                if (IsComplete)
+                    GlobalReferences.Notifications.DisplayMissionAccomplished();
+            }
         }
 
         public void Complete()

@@ -10,6 +10,7 @@ namespace Code.UI
         public void DisplayMissionAccomplished()
         {
             NotificationText.text = "Mission accomplished";
+            GetComponent<AudioSource>().Play();
         }
     }
 }

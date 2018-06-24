@@ -2,7 +2,6 @@
 using Code.Movement;
 using Code.Ship;
 using Code.UI;
-using Code.Weapons;
 using UnityEngine;
 
 namespace Code.PlayerInput
@@ -13,6 +12,7 @@ namespace Code.PlayerInput
         public SurveyorSystems Systems;
         public MapExpand MapExpand;
         public MapCamera MapCamera;
+        public GameObject InGameMenu;
 
         private bool mapExpanded;
 
@@ -25,7 +25,7 @@ namespace Code.PlayerInput
                 MovingEntity.Move(totalMovement);
             }
 
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonDown("Miner"))
             {
                 Systems.SwitchMode();
             }
@@ -44,6 +44,11 @@ namespace Code.PlayerInput
                 }
 
                 mapExpanded = !mapExpanded;
+            }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                InGameMenu.SetActive(!InGameMenu.activeInHierarchy);
             }
         }
     }

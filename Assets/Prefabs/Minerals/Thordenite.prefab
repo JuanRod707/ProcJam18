@@ -1038,7 +1038,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0, g: 0.41989136, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.3658824, b: 1, a: 1}
   m_Intensity: 5
   m_Range: 5
   m_SpotAngle: 30
@@ -1077,10 +1077,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MineralColor: 3
-  MaxYield: 100
-  MinYield: 20
+  MaxYield: 35
+  MinYield: 5
   Light: {fileID: 108059848917531934}
-  SparkParticle: {fileID: 0}
   DustParticle: {fileID: 198678416056593180}
   Crystals:
   - {fileID: 1056688357516484}

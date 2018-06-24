@@ -24,9 +24,12 @@ namespace Code.ControlRoom
 
         public void CheckCompletion()
         {
-            IsComplete = GlobalReferences.Cave.ExploredPercentage >= 100;
-            if(IsComplete)
-                GlobalReferences.Notifications.DisplayMissionAccomplished();
+            if (!IsComplete)
+            {
+                IsComplete = GlobalReferences.Cave.ExploredPercentage >= 100;
+                if (IsComplete)
+                    GlobalReferences.Notifications.DisplayMissionAccomplished();
+            }
         }
 
         public void Complete()

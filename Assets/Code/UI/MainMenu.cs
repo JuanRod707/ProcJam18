@@ -1,6 +1,9 @@
 ﻿using Code.Common;
+using Code.ControlRoom;
 using Code.Helpers;
+using Code.Helpers.Generators;
 using Code.IO.DataSchemas;
+using Code.Level;
 using Code.Session;
 using UnityEngine;
 
@@ -12,7 +15,10 @@ namespace Code.UI
         public void OnNewGame()
         {
             LiveSession.SetPlayerData(new PlayerData());
-            GetComponent<SceneTransition>().DelayedSceneChange("ControlRoom");
+            LiveSession.SetCaveData(NameGenerator.GenerateCaveName(), 3, new [] { Mineral.White });
+            LiveSession.SetCurrentMission(new MapMission(3));
+
+            GetComponent<SceneTransition>().DelayedSceneChange("CaveTutorial");
         }
 
         public void OnContinueGame()

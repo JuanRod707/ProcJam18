@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MapWall
   - Shriek
+  - Music
   layers:
   - Default
   - TransparentFX
