@@ -8,10 +8,12 @@ namespace Code.Shrieks
         public float StartingHealth;
         public float DistanceToDispose;
         public Rigidbody[] Bodies;
+        public AudioClip DieSfx;
 
         private float currentHealth;
         private ShriekBrain brain;
         private Transform surveyor;
+        private AudioSource audioPlayer;
 
         private bool isDead;
 
@@ -24,6 +26,7 @@ namespace Code.Shrieks
             brain = GetComponent<ShriekBrain>();
             currentHealth = StartingHealth;
             surveyor = GlobalReferences.Surveyor;
+            audioPlayer = GetComponent<AudioSource>();
         }
 
         void Update()
@@ -40,10 +43,13 @@ namespace Code.Shrieks
 
         public void ReceiveDamage(float damage)
         {
-            currentHealth -= damage;
-            if (currentHealth <= 0)
+            if (!isDead)
             {
-                Kill();
+                currentHealth -= damage;
+                if (currentHealth <= 0)
+                {
+                    Kill();
+                }
             }
         }
 
@@ -54,6 +60,9 @@ namespace Code.Shrieks
             {
                 b.useGravity = true;
             }
+
+            audioPlayer.clip = DieSfx;
+            audioPlayer.Play();
 
             isDead = true;
         }

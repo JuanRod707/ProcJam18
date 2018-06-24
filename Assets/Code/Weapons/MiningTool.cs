@@ -9,6 +9,7 @@ namespace Code.Weapons
     public class MiningTool : MonoBehaviour
     {
         public ParticleSystem MineEffect;
+        public ParticleSystem SparkEffect;
         public AudioSource MinerSfx;
         public float MiningRate;
         public float MiningEfficiency;
@@ -50,6 +51,7 @@ namespace Code.Weapons
             if (Physics.Raycast(ray, out hit, MineRange, MineralMask))
             {
                 CargoBay.AddCargo(hit.collider.GetComponent<MineralDeposit>().Mine(MiningEfficiency));
+                SparkEffect.Play();
             }
         }
     }

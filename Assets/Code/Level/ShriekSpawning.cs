@@ -34,7 +34,7 @@ namespace Code.Level
 
             var maxSpawns = (int)(spawns.Length * GameConfiguration.NormalSpawnMultiplier);
 
-            if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.White))
+            if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Green))
             {
                 maxSpawns = spawns.Length;
             }

@@ -11,7 +11,6 @@ namespace Code.Level
         public float MaxYield;
         public float MinYield;
         public Light Light;
-        public ParticleSystem SparkParticle;
         public ParticleSystem DustParticle;
         
         public GameObject[] Crystals;
@@ -69,7 +68,6 @@ namespace Code.Level
                 currentYield = 0;
             }
 
-            SparkParticle.Play();
             UpdateCrystals();
 
             return new MineralYield(MineralColor, amountMined);

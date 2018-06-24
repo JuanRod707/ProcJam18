@@ -48,7 +48,7 @@ namespace Code.UI.ControlRoom
 
         public void LaunchMission()
         {
-            LiveSession.SetCaveData(caveMission.CaveRooms, caveMission.CaveMinerals);
+            LiveSession.SetCaveData(caveMission.CaveName, caveMission.CaveRooms, caveMission.CaveMinerals);
             LiveSession.SetCurrentMission(caveMission.Mission);
             GetComponent<SceneTransition>().DelayedSceneChange("Cave");
         }

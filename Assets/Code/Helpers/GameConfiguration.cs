@@ -11,6 +11,7 @@ namespace Code.Helpers
         public static int RoomMappingValue = 1500;
         public static float NormalSpawnMultiplier = 0.5f;
         public static int ChancesOfRespawn = 20;
+        public static int ChancesOfMapMission = 30;
         public static FloatRange MineralExtractionRange = new FloatRange(20, 200);
 
         public static Dictionary<CaveSize, IntRange> CaveSizeRooms;

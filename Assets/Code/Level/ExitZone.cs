@@ -11,11 +11,6 @@ namespace Code.Level
 
         private bool wasTriggered;
 
-        void Start()
-        {
-            Debug.Log(LiveSession.CurrentMission.Description);
-        }
-
         void ExitCave()
         {
             LiveSession.ExitCave();

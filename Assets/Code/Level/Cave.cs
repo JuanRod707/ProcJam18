@@ -97,7 +97,7 @@ namespace Code.Level
             minerals.Add((Mineral)idx);
             minerals.Add((Mineral)indexes.PickOne());
 
-            LiveSession.SetCaveData(5, minerals.ToArray());
+            LiveSession.SetCaveData("", 5, minerals.ToArray());
         }
     }
 }

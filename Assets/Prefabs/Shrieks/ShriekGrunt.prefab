@@ -290,6 +290,9 @@ GameObject:
   - component: {fileID: 114080412592257044}
   - component: {fileID: 114885528417549924}
   - component: {fileID: 114116700177453974}
+  - component: {fileID: 114663490320866226}
+  - component: {fileID: 114633366690777286}
+  - component: {fileID: 82176374175693110}
   m_Layer: 0
   m_Name: ShriekGrunt
   m_TagString: Shriek
@@ -1332,6 +1335,101 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!82 &82176374175693110
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697931809107480}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 72
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &114080412592257044
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1367,6 +1465,33 @@ MonoBehaviour:
   - {fileID: 54461494771762266}
   - {fileID: 54540687573590056}
   - {fileID: 54992852320495596}
+  DieSfx: {fileID: 8300000, guid: 2cccfc98229a7ae459d76623f292b1e2, type: 3}
+--- !u!114 &114633366690777286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697931809107480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292a6795a1e04c51805b725358ca742c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PushFactor: 1
+--- !u!114 &114663490320866226
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1697931809107480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbddd0548d9a4572bf0cb71d0c5cbdbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamageModifier: 3
+  MinimumVelocity: 2
+  HitEffect: {fileID: 1606082750829540, guid: d96decddf631b224b88b990d2b6f7090, type: 2}
 --- !u!114 &114885528417549924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1385,6 +1510,11 @@ MonoBehaviour:
   ViewDistance:
     MinValue: 10
     MaxValue: 25
+  AwakeSfx:
+  - {fileID: 8300000, guid: 5f3efb50e53c614488ea5568ce4729d9, type: 3}
+  - {fileID: 8300000, guid: 2b7dc784e1ff53144b16ad698eb8f35c, type: 3}
+  - {fileID: 8300000, guid: 4185688191ea33145be3346a0e3a902f, type: 3}
+  AggroSfx: {fileID: 8300000, guid: 601dc07c41699d3459fe9be28a7898d3, type: 3}
 --- !u!135 &135226280885420916
 SphereCollider:
   m_ObjectHideFlags: 1

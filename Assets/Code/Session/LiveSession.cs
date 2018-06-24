@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Code.Common;
 using Code.ControlRoom;
+using Code.Helpers.Generators;
 using Code.Level;
 
 namespace Code.Session
@@ -13,14 +14,14 @@ namespace Code.Session
 
         static LiveSession()
         {
-            SetCaveData(5, new[] {Mineral.Blue, Mineral.White});
+            SetCaveData(NameGenerator.GenerateCaveName(), 5, new[] {Mineral.Blue, Mineral.White});
             SetPlayerData(new PlayerData());
             SetCurrentMission(new MapMission(0));
         }
 
-        public static void SetCaveData(int size, IEnumerable<Mineral> materials)
+        public static void SetCaveData(string name, int size, IEnumerable<Mineral> materials)
         {
-            CaveData = new CaveData(size, materials);
+            CaveData = new CaveData(name, size, materials);
         }
 
         public static void SetCurrentMission(Mission mission)

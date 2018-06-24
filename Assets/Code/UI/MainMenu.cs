@@ -1,4 +1,6 @@
 ﻿using Code.Common;
+using Code.Helpers;
+using Code.Session;
 using UnityEngine;
 
 namespace Code.UI
@@ -8,6 +10,7 @@ namespace Code.UI
     {
         public void OnNewGame()
         {
+            LiveSession.SetPlayerData(new PlayerData());
             GetComponent<SceneTransition>().DelayedSceneChange("ControlRoom");
         }
 

@@ -33,14 +33,12 @@ namespace Code.ControlRoom
 
         private static Mission GenerateMission(CaveMission caveMission)
         {
-            if (MathHelper.RollD2())
-            {
-                return new MapMission(caveMission.CaveRooms);
-            }
-            else
+            if (MathHelper.ChanceD100(GameConfiguration.ChancesOfMapMission))
             {
                 return new MiningMission(caveMission.CaveMinerals);
             }
+
+            return new MapMission(caveMission.CaveRooms);
         }
 
         static IEnumerable<Mineral> GenerateMinerals()

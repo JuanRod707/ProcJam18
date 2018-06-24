@@ -10,10 +10,15 @@ namespace Code.Shrieks
         public FloatRange NavigateViewDistance;
         public FloatRange ViewDistance;
 
+        public AudioClip[] AwakeSfx;
+        public AudioClip AggroSfx;
+        
         private Transform surveyor;
         private ShriekMovement movement;
         private float viewDistance;
         private float navigateViewDistance;
+        private AudioSource audioPlayer;
+        private bool canPlayAggro;
 
         private bool surveyorInRange {
             get { return Vector3.Distance(transform.position, surveyor.position) < DistanceToSearch; }
@@ -60,11 +65,16 @@ namespace Code.Shrieks
 
         void Start()
         {
+            audioPlayer = GetComponent<AudioSource>();
             viewDistance = MathHelper.SelectFromRange(ViewDistance);
             navigateViewDistance = MathHelper.SelectFromRange(NavigateViewDistance);
 
             surveyor = GlobalReferences.Surveyor;
             movement = GetComponent<ShriekMovement>();
+
+            canPlayAggro = true;
+
+            PlayAwakeSound();
         }
 
         void Update()
@@ -74,6 +84,7 @@ namespace Code.Shrieks
                 if (surveyorInSight)
                 {
                     movement.Charge();
+                    PlayAggroSound();
                 }
                 else
                 {
@@ -97,6 +108,7 @@ namespace Code.Shrieks
 
         void Navigate()
         {
+            canPlayAggro = true;
             if (wallInSight)
             {
                 if (WallToTheRigt)
@@ -107,6 +119,25 @@ namespace Code.Shrieks
                 {
                     movement.TurnRight();
                 }
+            }
+        }
+
+        void PlayAwakeSound()
+        {
+            if (MathHelper.ChanceD100(40))
+            {
+                audioPlayer.clip = AwakeSfx.PickOne();
+                audioPlayer.Play();
+            }
+        }
+
+        void PlayAggroSound()
+        {
+            if (canPlayAggro)
+            {
+                audioPlayer.clip = AggroSfx;
+                audioPlayer.Play();
+                canPlayAggro = false;
             }
         }
     }
