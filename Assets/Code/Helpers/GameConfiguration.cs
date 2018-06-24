@@ -9,7 +9,7 @@ namespace Code.Helpers
         public static int ExtraMineralChance = 5;
         public static float ExtractionMissionMultiplier = 1.5f;
         public static int RoomMappingValue = 1500;
-        public static float NormalSpawnMultiplier = 0.75f;
+        public static float NormalSpawnMultiplier = 0.5f;
         public static int ChancesOfRespawn = 20;
         public static FloatRange MineralExtractionRange = new FloatRange(20, 200);
 

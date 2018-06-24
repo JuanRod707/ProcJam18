@@ -30,17 +30,20 @@ namespace Code.Level
 
         void SpawnFirstTime()
         {
-            var normalCount = spawnPoints.Count() * GameConfiguration.NormalSpawnMultiplier;
-            var spawnCandidates = spawnPoints.Take((int)normalCount);
+            var spawns = spawnPoints.ToArray();
+
+            var maxSpawns = (int)(spawns.Length * GameConfiguration.NormalSpawnMultiplier);
 
             if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.White))
             {
-                spawnCandidates = spawnPoints;
+                maxSpawns = spawns.Length;
             }
 
-            foreach (var sp in spawnCandidates)
+            var shrieksToSpawn = Random.Range(0, maxSpawns);
+
+            for (int i = 0; i < shrieksToSpawn; i++)
             {
-                var shriek = Instantiate(Repos.ShrieksRepo.GetRandomShriek(), sp.position, Quaternion.identity)
+                var shriek = Instantiate(Repos.ShrieksRepo.GetRandomShriek(), spawns[i].position, Quaternion.identity)
                     .transform;
                 shriek.SetParent(GlobalReferences.ShriekContainer);
             }
