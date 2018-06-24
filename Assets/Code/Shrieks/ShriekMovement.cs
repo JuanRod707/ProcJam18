@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using Code.Level;
+using Code.Session;
+using UnityEngine;
 
 namespace Code.Shrieks
 {
@@ -13,6 +16,7 @@ namespace Code.Shrieks
         public void Start()
         {
             myBody = GetComponent<Rigidbody>();
+            Mutate();
         }
 
         public void MoveForward()
@@ -33,6 +37,21 @@ namespace Code.Shrieks
         public void TurnLeft()
         {
             myBody.AddTorque(transform.right * -RotationSpeed);
+        }
+
+        void Mutate()
+        {
+            if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Red))
+            {
+                MoveSpeed += MoveSpeed / 2;
+                ChargeSpeed += ChargeSpeed / 2;
+
+                if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Red))
+                {
+                    MoveSpeed += MoveSpeed / 2;
+                    ChargeSpeed += ChargeSpeed / 2;
+                }
+            }
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using Code.Level;
+using Code.Session;
 using Code.Ship;
 using UnityEngine;
 
@@ -15,6 +17,7 @@ namespace Code.Shrieks
         void Start()
         {
             myBody = GetComponent<Rigidbody>();
+            Mutate();
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -24,6 +27,19 @@ namespace Code.Shrieks
             {
                 hull.ReceiveDamage(myBody.velocity.magnitude * DamageModifier);
                 Instantiate(HitEffect, collision.contacts.First().point, Quaternion.identity);
+            }
+        }
+
+        void Mutate()
+        {
+            if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Red))
+            {
+                DamageModifier += DamageModifier / 2;
+
+                if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Red))
+                {
+                    DamageModifier += DamageModifier / 2;
+                }
             }
         }
     }

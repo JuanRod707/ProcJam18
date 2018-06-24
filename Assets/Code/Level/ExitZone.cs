@@ -24,6 +24,7 @@ namespace Code.Level
                 if (other.CompareTag(PlayerTag))
                 {
                     ExitCave();
+                    LiveSession.SavePlayer();
                     wasTriggered = true;
                 }
             }

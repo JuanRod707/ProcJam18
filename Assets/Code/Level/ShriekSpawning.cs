@@ -33,13 +33,19 @@ namespace Code.Level
             var spawns = spawnPoints.ToArray();
 
             var maxSpawns = (int)(spawns.Length * GameConfiguration.NormalSpawnMultiplier);
+            var minSpawns = 0;
 
             if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Green))
             {
                 maxSpawns = spawns.Length;
+                minSpawns = 1;
+                if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Yellow))
+                {
+                    minSpawns++;
+                }
             }
 
-            var shrieksToSpawn = Random.Range(0, maxSpawns);
+            var shrieksToSpawn = Random.Range(minSpawns, maxSpawns);
 
             for (int i = 0; i < shrieksToSpawn; i++)
             {

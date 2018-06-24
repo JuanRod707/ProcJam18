@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Code.Common;
 using Code.Helpers;
 using Code.Infrastructure.Repositories.Code.Infrastructure.Repositories;
 using Code.Session;
@@ -11,7 +12,6 @@ namespace Code.Level
     public class Cave : MonoBehaviour
     {
         public int RoomCount;
-        public bool MenuCave;
         public DynamicLabel PercentageExplored;
 
         private List<Collider> caveSectionColliders = new List<Collider>();
@@ -19,13 +19,23 @@ namespace Code.Level
 
         public float ExploredPercentage { get; private set; }
 
+        private IEnumerable<Collider> chambers {
+            get { return caveSectionColliders.Where(x => x.GetComponentInParent<Chamber>() != null); }
+        }
+
+        private IEnumerable<Collider> corridors
+        {
+            get { return caveSectionColliders.Where(x => x.GetComponentInParent<Corridor>() != null); }
+        }
+
+        private IEnumerable<Collider> deadEnds
+        {
+            get { return caveSectionColliders.Where(x => x.GetComponentInParent<DeadEnd>() != null); }
+        }
+
         void Start()
         {
             RoomCount = 0;
-            if (MenuCave)
-            {
-               PrepareMenuCave();
-            }
 
             Instantiate(Repos.SectionsRepo.GetRandomBigChamber(), transform);
             var deadEnd = Instantiate(Repos.SectionsRepo.GetRandomDeadEnd(), transform);
@@ -36,26 +46,32 @@ namespace Code.Level
         {
             if (!caveClosed)
             {
-                var topMostBounds = caveSectionColliders.Where(c => c.GetComponentInParent<Chamber>() != null).OrderBy(x => x.transform.position.y).Last();
+                var topMostBounds = chambers.OrderBy(x => x.transform.position.y).Last();
                 var intersectingSections = caveSectionColliders.Where(x => x.bounds.Intersects(topMostBounds.bounds));
-                var deadEnds = intersectingSections.Where(x => x.transform.parent.GetComponent<DeadEnd>() != null);
+                var deadEndsToRemove = intersectingSections.Where(x => x.transform.parent.GetComponent<DeadEnd>() != null);
                 var topChamber = topMostBounds.transform.parent;
 
-                foreach (var de in deadEnds)
+                foreach (var de in deadEndsToRemove)
                 {
                     caveSectionColliders.Remove(de);
                     Destroy(de.gameObject);
                 }
 
-                if (!MenuCave)
+                var entrance = Instantiate(Repos.SectionsRepo.GetRandomEntrance(), topChamber.position, topChamber.rotation);
+                entrance.transform.SetParent(transform);
+
+                caveSectionColliders.Remove(topMostBounds);
+                Destroy(topChamber.gameObject);
+
+                var faultyDeadEnd =
+                    deadEnds.FirstOrDefault(x => Vector3.Distance(x.transform.position, GlobalReferences.Surveyor.position) < 50);
+                if (faultyDeadEnd != null)
                 {
-                    var entrance = Instantiate(Repos.SectionsRepo.GetRandomEntrance(), topChamber.position,
-                        topChamber.rotation);
-                    entrance.transform.SetParent(transform);
-                    caveSectionColliders.Remove(topMostBounds);
-                    Destroy(topChamber.gameObject);
-                    caveClosed = true;
+                    caveSectionColliders.Remove(faultyDeadEnd);
+                    Destroy(faultyDeadEnd.gameObject);
                 }
+
+                caveClosed = true;
             }
         }
 
@@ -86,18 +102,6 @@ namespace Code.Level
 
             PercentageExplored.SetLabel(ExploredPercentage.ToString("0"));
             LiveSession.CurrentMission.CheckCompletion();    
-        }
-
-        void PrepareMenuCave()
-        {
-            var indexes = Enumerable.Range(0, 4).ToList();
-            var minerals = new List<Mineral>();
-            var idx = indexes.PickOne();
-            indexes.Remove(idx);
-            minerals.Add((Mineral)idx);
-            minerals.Add((Mineral)indexes.PickOne());
-
-            LiveSession.SetCaveData("", 5, minerals.ToArray());
         }
     }
 }

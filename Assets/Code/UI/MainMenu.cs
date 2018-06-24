@@ -1,5 +1,6 @@
 ﻿using Code.Common;
 using Code.Helpers;
+using Code.IO.DataSchemas;
 using Code.Session;
 using UnityEngine;
 
@@ -16,7 +17,11 @@ namespace Code.UI
 
         public void OnContinueGame()
         {
-            GetComponent<SceneTransition>().DelayedSceneChange("ControlRoom");
+            if (CharacterSave.IsSavePresent())
+            {
+                LiveSession.SetPlayerData(CharacterSave.Load());
+                GetComponent<SceneTransition>().DelayedSceneChange("ControlRoom");
+            }
         }
 
         public void OnExit()

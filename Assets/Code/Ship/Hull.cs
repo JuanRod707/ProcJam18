@@ -1,4 +1,5 @@
-﻿using Code.Shrieks;
+﻿using Code.IO.DataSchemas;
+using Code.Shrieks;
 using Code.UI;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ namespace Code.Ship
         public ParticleSystem LowHpEffect;
         public GameObject CarcassPrefab;
         public DeathPanel DeathReport;
+        public DynamicLabel HullStatusUI;
 
         private bool isDead;
         
@@ -22,6 +24,7 @@ namespace Code.Ship
         void Start()
         {
             currentHitPoints = StartingHitPoints;
+            HullStatusUI.SetLabel(currentHitPoints.ToString("0"));
         }
 
         public void ReceiveDamage(float damage)
@@ -29,7 +32,7 @@ namespace Code.Ship
             if (!isDead)
             {
                 currentHitPoints -= damage;
-
+                
                 if (currentHitPoints < warningThreshold)
                 {
                     LowHpEffect.Play();
@@ -37,8 +40,11 @@ namespace Code.Ship
 
                 if (currentHitPoints <= 0)
                 {
+                    currentHitPoints = 0;
                     Kill();
                 }
+
+                HullStatusUI.SetLabel(currentHitPoints.ToString("0"));
             }
         }
 
@@ -50,6 +56,7 @@ namespace Code.Ship
             isDead = true;
 
             DeathReport.ShowDeathPanel();
+            CharacterSave.Delete();
         }
     }
 }

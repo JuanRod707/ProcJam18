@@ -1,4 +1,7 @@
-﻿using Code.Common;
+﻿using System.Linq;
+using Code.Common;
+using Code.Level;
+using Code.Session;
 using UnityEngine;
 
 namespace Code.Shrieks
@@ -6,6 +9,7 @@ namespace Code.Shrieks
     public class ShriekHead : MonoBehaviour, Damageable
     {
         public float StartingHealth;
+        public float Regeneration;
         public float DistanceToDispose;
         public Rigidbody[] Bodies;
         public AudioClip DieSfx;
@@ -24,6 +28,7 @@ namespace Code.Shrieks
         void Start()
         {
             brain = GetComponent<ShriekBrain>();
+            Mutate();
             currentHealth = StartingHealth;
             surveyor = GlobalReferences.Surveyor;
             audioPlayer = GetComponent<AudioSource>();
@@ -38,6 +43,11 @@ namespace Code.Shrieks
                     if (body != null)
                         Destroy(body.gameObject);
                 }
+            }
+
+            if (!isDead && LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Yellow))
+            {
+                currentHealth += Regeneration;
             }
         }
 
@@ -65,6 +75,19 @@ namespace Code.Shrieks
             audioPlayer.Play();
 
             isDead = true;
+        }
+
+        void Mutate()
+        {
+            if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Red))
+            {
+                StartingHealth += StartingHealth / 2;
+
+                if (LiveSession.CaveData.AvailableMinerals.Contains(Mineral.Red))
+                {
+                    StartingHealth += StartingHealth / 2;
+                }
+            }
         }
     }
 }

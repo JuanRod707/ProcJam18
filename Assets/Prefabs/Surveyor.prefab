@@ -3101,6 +3101,8 @@ MonoBehaviour:
   LowHpEffect: {fileID: 198272114746177612}
   CarcassPrefab: {fileID: 1367960973897562, guid: d42bd7313eaedc349a469eae97fc841a,
     type: 2}
+  DeathReport: {fileID: 0}
+  HullStatusUI: {fileID: 0}
 --- !u!114 &114184258554932988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3281,7 +3283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06cc137ce3624b4ab320af6f9826366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CargoCapacity: 500
+  CargoCapacity: 200
   CargoPanel: {fileID: 0}
 --- !u!114 &114835343864291652
 MonoBehaviour:

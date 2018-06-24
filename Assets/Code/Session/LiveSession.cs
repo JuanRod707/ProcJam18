@@ -2,6 +2,7 @@
 using Code.Common;
 using Code.ControlRoom;
 using Code.Helpers.Generators;
+using Code.IO.DataSchemas;
 using Code.Level;
 
 namespace Code.Session
@@ -36,7 +37,7 @@ namespace Code.Session
 
         public static void SavePlayer()
         {
-            
+            CharacterSave.Save(PlayerData);
         }
 
         public static void ExitCave()

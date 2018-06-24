@@ -1,7 +1,9 @@
-﻿using Code.Helpers.Generators;
+﻿using System;
+using Code.Helpers.Generators;
 
 namespace Code.Session
 {
+    [Serializable]
     public class PlayerData
     {
         public string Name { get; set; }

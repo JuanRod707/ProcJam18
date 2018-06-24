@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Code.Level;
 using Code.Movement;
+using Code.Session;
 using Code.Ship;
 using UnityEngine;
 
@@ -52,6 +53,7 @@ namespace Code.Weapons
             {
                 CargoBay.AddCargo(hit.collider.GetComponent<MineralDeposit>().Mine(MiningEfficiency));
                 SparkEffect.Play();
+                LiveSession.CurrentMission.CheckCompletion();
             }
         }
     }
