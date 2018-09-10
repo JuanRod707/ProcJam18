@@ -1077,8 +1077,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MineralColor: 3
-  MaxYield: 35
-  MinYield: 5
+  MaxYield: 10
+  MinYield: 2
   Light: {fileID: 108059848917531934}
   DustParticle: {fileID: 198678416056593180}
   Crystals:

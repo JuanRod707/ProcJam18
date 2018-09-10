@@ -3083,6 +3083,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114828913442969224, guid: 5c0c290301363bf4ab6eef452a33ee0b,
+        type: 2}
+      propertyPath: CargoPanel
+      value: 
+      objectReference: {fileID: 234735331}
     - target: {fileID: 114112397038749156, guid: 5c0c290301363bf4ab6eef452a33ee0b,
         type: 2}
       propertyPath: DeathReport
@@ -3093,11 +3098,6 @@ Prefab:
       propertyPath: HullStatusUI
       value: 
       objectReference: {fileID: 361603119}
-    - target: {fileID: 114828913442969224, guid: 5c0c290301363bf4ab6eef452a33ee0b,
-        type: 2}
-      propertyPath: CargoPanel
-      value: 
-      objectReference: {fileID: 234735331}
     - target: {fileID: 114285792900634878, guid: 5c0c290301363bf4ab6eef452a33ee0b,
         type: 2}
       propertyPath: EnergyMeter
